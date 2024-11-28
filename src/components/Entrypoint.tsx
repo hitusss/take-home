@@ -45,6 +45,7 @@ export const Entrypoint = () => {
           {visibleCards.map((card) => (
             <Card
               key={card.id}
+              id={card.id}
               title={card.title}
               description={card.description}
             />

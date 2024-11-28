@@ -7,15 +7,19 @@ import {
   CollapsibleButton,
   CollapsibleContent,
 } from "./Collapsible";
+import { useStore } from "../store";
 
 type CardProps = {
+  id: ListItem["id"];
   title: ListItem["title"];
   description: ListItem["description"];
 };
 
-export const Card: FC<CardProps> = ({ title, description }) => {
+export const Card: FC<CardProps> = ({ id, title, description }) => {
+  const open = useStore((state) => state.expanded.has(id));
+  const toggleExpanded = useStore((state) => state.toggleExpanded);
   return (
-    <Collapsible>
+    <Collapsible open={open} onOpenChange={() => toggleExpanded(id)}>
       <div className="border border-black px-2 py-1.5">
         <div className="flex justify-between mb-0.5">
           <h1 className="font-medium">{title}</h1>
