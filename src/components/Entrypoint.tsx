@@ -19,6 +19,10 @@ export const Entrypoint = () => {
     setVisibleCards(listQuery.data?.filter((item) => item.isVisible) ?? []);
   }, [listQuery.data, listQuery.isLoading]);
 
+  /*
+   * If we want to show a spinner while refreshing, we can add
+   * listQuery.isRefetching to the if condition.
+   */
   if (listQuery.isLoading) {
     return <Spinner />;
   }
@@ -26,9 +30,17 @@ export const Entrypoint = () => {
   return (
     <div className="flex gap-x-16">
       <div className="w-full max-w-xl">
-        <h1 className="mb-1 font-medium text-lg">
-          My Awesome List ({visibleCards.length})
-        </h1>
+        <div className="flex items-center justify-between">
+          <h1 className="mb-1 font-medium text-lg">
+            My Awesome List ({visibleCards.length})
+          </h1>
+          <Button
+            onClick={() => listQuery.refetch()}
+            disabled={listQuery.isRefetching}
+          >
+            Refresh
+          </Button>
+        </div>
         <div className="flex flex-col gap-y-3">
           {visibleCards.map((card) => (
             <Card
