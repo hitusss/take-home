@@ -8,6 +8,7 @@ import { useStore } from "../store";
 export const Entrypoint = () => {
   const [visibleCards, setVisibleCards] = useState<ListItem[]>([]);
   const [deletedCards, setDeletedCards] = useState<ListItem[]>([]);
+  const [showDeleted, setShowDeleted] = useState(false);
   const deleted = useStore((state) => state.deleted);
   const listQuery = useGetListData();
 
@@ -66,13 +67,23 @@ export const Entrypoint = () => {
           <h1 className="mb-1 font-medium text-lg">
             Deleted Cards ({deletedCards.length})
           </h1>
-          <Button disabled>Reveal</Button>
+          <Button onClick={() => setShowDeleted((prev) => !prev)}>
+            {showDeleted ? "Hide" : "Reveal"}
+          </Button>
         </div>
-        <div className="flex flex-col gap-y-3">
-          {/* {deletedCards.map((card) => (
-            <Card key={card.id} card={card} />
-          ))} */}
-        </div>
+        {showDeleted && (
+          <div className="flex flex-col gap-y-3">
+            {deletedCards.map((card) => (
+              <Card
+                key={card.id}
+                variant="deleted"
+                id={card.id}
+                title={card.title}
+                description={card.description}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
