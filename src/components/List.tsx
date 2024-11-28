@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ListItem } from "../api/getListData";
-import { DeleteButton, ExpandButton } from "./Buttons";
-import { ChevronUpIcon } from "./icons";
+import { Button } from "./Button";
+import { ChevronUpIcon, XMarkIcon } from "./icons";
 
 type CardProps = {
   title: ListItem["title"];
@@ -14,10 +14,12 @@ export const Card: FC<CardProps> = ({ title, description }) => {
       <div className="flex justify-between mb-0.5">
         <h1 className="font-medium">{title}</h1>
         <div className="flex">
-          <ExpandButton>
+          <Button variant="ghost" size="icon">
             <ChevronUpIcon />
-          </ExpandButton>
-          <DeleteButton />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <XMarkIcon />
+          </Button>
         </div>
       </div>
       <p className="text-sm">{description}</p>
