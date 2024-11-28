@@ -32,7 +32,9 @@ export const Card: FC<CardProps> = ({
   const deleteItem = useStore((state) => state.deleteItem);
   return (
     <Collapsible open={open} onOpenChange={() => toggleExpanded(id)}>
-      <div className={`border px-2 py-1.5 ${variants[variant]}`}>
+      <div
+        className={`border px-2 py-1.5 animate-fade-in ${variants[variant]}`}
+      >
         <div className="flex justify-between mb-0.5">
           <h1 className="font-medium">{title}</h1>
           {variant === "default" && (
