@@ -18,6 +18,7 @@ type CardProps = {
 export const Card: FC<CardProps> = ({ id, title, description }) => {
   const open = useStore((state) => state.expanded.has(id));
   const toggleExpanded = useStore((state) => state.toggleExpanded);
+  const deleteItem = useStore((state) => state.deleteItem);
   return (
     <Collapsible open={open} onOpenChange={() => toggleExpanded(id)}>
       <div className="border border-black px-2 py-1.5">
@@ -25,7 +26,7 @@ export const Card: FC<CardProps> = ({ id, title, description }) => {
           <h1 className="font-medium">{title}</h1>
           <div className="flex">
             <CollapsibleButton />
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" onClick={() => deleteItem(id)}>
               <XMarkIcon />
             </Button>
           </div>
