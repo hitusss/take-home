@@ -11,6 +11,13 @@ type ToggleButtonProps = {
   children: React.ReactNode;
 };
 
+/*
+ * Example tests:
+ * - Throw error when one of active and onActiveChange is defined and the other is undefined
+ * - Handle activity state change when component is controlled and uncontrolled
+ * - Handle keyboard interactions
+ */
+
 export function ToggleButton({
   active,
   onActiveChange,

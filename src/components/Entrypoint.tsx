@@ -5,6 +5,14 @@ import { Spinner } from "./Spinner";
 import { Button } from "./Button";
 import { useStore } from "../store";
 
+/*
+ * Example E2E tests:
+ * - Show the spinner while loading
+ * - Refresh the list when the refresh button is clicked
+ * - Delete a card when the delete button is clicked
+ * - Reveal and show the deleted cards when the reveal button is clicked
+ */
+
 export const Entrypoint = () => {
   const [visibleCards, setVisibleCards] = useState<ListItem[]>([]);
   const [deletedCards, setDeletedCards] = useState<ListItem[]>([]);

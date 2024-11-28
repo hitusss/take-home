@@ -25,6 +25,12 @@ function useCollapsibleContext() {
   return context;
 }
 
+/*
+ * Example tests:
+ * - Throw error when one of open and onOpenChange is defined and the other is undefined
+ * - Handle open state change when component is controlled and uncontrolled
+ */
+
 export function Collapsible({
   children,
   open,

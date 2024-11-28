@@ -21,6 +21,12 @@ type CardProps = {
   description: ListItem["description"];
 };
 
+/*
+ * Example tests:
+ * - Hide the collapsible and delete button when varaint is deleted
+ * - Hide the description when variant is deleted
+ */
+
 export const Card: FC<CardProps> = ({
   variant = "default",
   id,

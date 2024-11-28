@@ -15,6 +15,12 @@ type ButtonProps = {
   size?: keyof typeof sizes;
 } & Omit<React.ComponentProps<"button">, "className">;
 
+/*
+ * I decide to create universal button component that can be easy controlled
+ * by variant and size props, normally for that I will use class-variance-authority
+ * also I will use tailwind-merge to enable styles overrides using className
+ */
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = "primary", size = "default", children, ...props }, ref) => (
     <button
